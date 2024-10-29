@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PROJECT_279</string>
+    <string name="logo">Logo</string>
+    <string name="snapshop">SNAPSHOP</string>
+    <string name="sign_in_button">Sign in</string>
+    <string name="sign_up_button">Sign up</string>
 </resources>

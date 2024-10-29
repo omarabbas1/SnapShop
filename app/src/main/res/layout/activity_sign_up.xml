@@ -59,7 +59,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_email" />
+                    android:src="@drawable/baseline_mail_outline_24" />
 
                 <View
                     android:layout_width="1dp"
@@ -151,7 +151,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_lock" />
+                    android:src="@drawable/baseline_lock_outline_24" />
 
                 <View
                     android:layout_width="1dp"
@@ -197,7 +197,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_lock" />
+                    android:src="@drawable/baseline_lock_outline_24" />
 
                 <View
                     android:layout_width="1dp"

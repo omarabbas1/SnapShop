@@ -13,4 +13,11 @@
     <string name="remember_me">Remember Me</string>
     <string name="log_in_button">Log in</string>
     <string name="don_t_have_an_account_sign_up">Don’t have an Account? Sign up</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_icon">phone icon</string>
+    <string name="phone_number_example">+961 00-000 000</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="re_enter_your_password">re-enter your password</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account_sign_in">Already have an Account? Sign in</string>
 </resources>

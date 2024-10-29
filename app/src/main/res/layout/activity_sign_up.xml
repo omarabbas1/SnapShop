@@ -5,7 +5,7 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <!-- Card or rounded background -->
@@ -28,11 +28,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Sign up"
-            android:textColor="#000000"
-            android:textSize="24sp" />
+            android:text="@string/sign_up_button"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
 
         <!-- Email input field with label -->
         <LinearLayout
@@ -46,9 +46,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Email"
-                android:textColor="#000000"
-                android:textSize="14sp" />
+                android:text="@string/email"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,24 +60,28 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_mail_outline_24" />
+                    android:src="@drawable/baseline_mail_outline_24"
+                    android:contentDescription="@string/email_icon"/>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:background="#000000" />
+                    android:background="@color/black" />
 
                 <EditText
                     android:id="@+id/email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:autofillHints=""
                     android:background="@android:color/transparent"
-                    android:hint="example@gmail.com"
+                    android:hint="@string/example_gmail_com"
                     android:inputType="textEmailAddress"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/dark_gray"
+                    tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
             </LinearLayout>
         </LinearLayout>
 
@@ -91,10 +96,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Phone Number"
-                android:textColor="#000000"
-                android:textSize="14sp" />
+                android:text="@string/phone_number"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,24 +112,28 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_phone" />
+                    android:src="@drawable/outline_phone_24"
+                    android:contentDescription="@string/phone_icon"/>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:background="#000000" />
+                    android:background="@color/black" />
 
                 <EditText
                     android:id="@+id/phoneNumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:autofillHints=""
                     android:background="@android:color/transparent"
-                    android:hint="+961 00-000 000"
+                    android:hint="@string/phone_number_example"
                     android:inputType="phone"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/dark_gray"
+                    tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
             </LinearLayout>
         </LinearLayout>
 
@@ -137,10 +148,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Password"
-                android:textColor="#000000"
-                android:textSize="14sp" />
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,24 +164,28 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_lock_outline_24" />
+                    android:src="@drawable/baseline_lock_outline_24"
+                    android:contentDescription="@string/password_lock"/>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:background="#000000" />
+                    android:background="@color/black" />
 
                 <EditText
                     android:id="@+id/password"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:autofillHints=""
                     android:background="@android:color/transparent"
-                    android:hint="Enter your password"
+                    android:hint="@string/enter_your_password"
                     android:inputType="textPassword"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/dark_gray"
+                    tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
             </LinearLayout>
         </LinearLayout>
 
@@ -183,10 +200,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
+                android:layout_marginTop="8dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Confirm password"
-                android:textColor="#000000"
-                android:textSize="14sp" />
+                android:text="@string/confirm_password"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -197,24 +216,28 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/baseline_lock_outline_24" />
+                    android:src="@drawable/baseline_lock_outline_24"
+                    android:contentDescription="@string/password_lock"/>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
-                    android:background="#000000" />
+                    android:background="@color/black" />
 
                 <EditText
                     android:id="@+id/confirmPassword"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:autofillHints=""
                     android:background="@android:color/transparent"
-                    android:hint="Re-enter your password"
+                    android:hint="@string/re_enter_your_password"
                     android:inputType="textPassword"
-                    android:textColor="#000000" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/dark_gray"
+                    tools:ignore="TouchTargetSizeCheck,VisualLintTextFieldSize" />
             </LinearLayout>
         </LinearLayout>
 
@@ -223,19 +246,22 @@
             android:id="@+id/rememberMe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Remember Me"
-            android:textColor="#000000" />
+            android:text="@string/remember_me"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
 
         <!-- Create Account Button -->
         <Button
             android:id="@+id/btnCreateAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#F4A261"
-            android:text="Create Account"
-            android:textColor="#FFFFFF" />
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="60dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/orange"
+            android:text="@string/create_account"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <!-- Sign in Text -->
         <TextView
@@ -245,8 +271,9 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Already have an Account? Sign in"
-            android:textColor="@color/sign_up_selector" />
+            android:text="@string/already_have_an_account_sign_in"
+            android:textColor="@color/sign_up_selector"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

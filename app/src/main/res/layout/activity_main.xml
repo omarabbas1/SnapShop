@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/white"
     android:padding="16dp">
 
     <!-- Responsive Logo Image -->
@@ -19,7 +19,7 @@
         android:layout_width="190dp"
         android:layout_height="0dp"
         android:layout_marginTop="120dp"
-        android:contentDescription="Logo"
+        android:contentDescription="@string/logo"
         android:scaleType="centerInside"
         android:src="@drawable/snapshop_logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,23 +32,28 @@
         android:id="@+id/title"
         android:layout_width="163dp"
         android:layout_height="48dp"
-        android:text="SNAPSHOP"
-        android:textColor="#000000"
+        android:text="@string/snapshop"
+        android:textColor="@color/black"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        tools:ignore="TextSizeCheck" />
 
     <Button
         android:id="@+id/btnSignIn"
-        android:layout_width="174dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#A5E1DF"
+        android:layout_width="234dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="76dp"
+        android:backgroundTint="@color/light_blue"
         android:padding="10dp"
-        android:text="Sign in"
-        android:textColor="#000000"
+        android:text="@string/sign_in_button"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         app:layout_constraintWidth_percent="0.8"
@@ -56,17 +61,23 @@
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="175dp"
-        android:layout_height="57dp"
+        android:layout_width="234dp"
+        android:layout_height="60dp"
         android:layout_marginTop="28dp"
-        android:backgroundTint="#F4A261"
+        android:backgroundTint="@color/orange"
         android:padding="10dp"
-        android:text="Sign up"
-        android:textColor="#000000"
+        android:text="@string/sign_up_button"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSignIn"
+        app:layout_constraintVertical_bias="0.0"
         app:layout_constraintWidth_percent="0.8"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">PROJECT_279</string>
+    <string name="logo">Logo</string>
+    <string name="snapshop">SNAPSHOP</string>
+    <string name="sign_in_button">Sign in</string>
+    <string name="sign_up_button">Sign up</string>
+    <string name="email">Email</string>
+    <string name="email_icon">email icon</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="password_lock">password lock</string>
+    <string name="enter_your_password">enter your password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="log_in_button">Log in</string>
+    <string name="don_t_have_an_account_sign_up">Don’t have an Account? Sign up</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="phone_icon">phone icon</string>
+    <string name="phone_number_example">+961 00-000 000</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="re_enter_your_password">re-enter your password</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_an_account_sign_in">Already have an Account? Sign in</string>
 </resources>

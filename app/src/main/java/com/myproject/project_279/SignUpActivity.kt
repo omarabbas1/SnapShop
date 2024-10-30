@@ -55,7 +55,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         // Color span for "Sign in"
-        val signInColor = ForegroundColorSpan(Color.RED)
+        val signInColor = ForegroundColorSpan(Color.rgb(59, 150, 220))
 
         // Apply clickable and color span only to "Sign in"
         val startIndex = fullText.indexOf("Sign in") // Start index of "Sign in"

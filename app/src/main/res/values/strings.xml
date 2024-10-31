@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">PROJECT_279</string>
+    <string name="favorites">Favorites</string>
+    <string name="favorite_empty">Favorite is Empty</string>
+    <string name="your_message">Your favorite basket is empty, look for some of your favorite products</string>
+    <string name="return_home">Return Home</string>
+    <string name="image_description">Avatar image description</string>
+    <!-- Additional strings for the project -->
     <string name="logo">Logo</string>
     <string name="snapshop">SNAPSHOP</string>
     <string name="sign_in_button">Sign in</string>

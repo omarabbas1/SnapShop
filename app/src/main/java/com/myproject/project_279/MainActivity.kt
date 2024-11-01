@@ -1,8 +1,5 @@
 package com.myproject.project_279
 
-
-
-
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,5 +27,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
+
+        val buttonGoToProductPage = findViewById<Button>(R.id.buttonGoToProductPage)
+        buttonGoToProductPage.setOnClickListener {
+            val intent = Intent(this, ProductPageActivity::class.java)
+            startActivity(intent)}
     }
 }

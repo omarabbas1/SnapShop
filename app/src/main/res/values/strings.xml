@@ -20,4 +20,6 @@
     <string name="re_enter_your_password">re-enter your password</string>
     <string name="create_account">Create Account</string>
     <string name="already_have_an_account_sign_in">Already have an Account? Sign in</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

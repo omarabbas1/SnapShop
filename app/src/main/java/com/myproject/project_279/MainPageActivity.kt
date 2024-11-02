@@ -1,12 +1,16 @@
 package com.myproject.project_279
 
+import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
+import androidx.core.content.ContextCompat
 
 class MainPageActivity : AppCompatActivity() {
 
@@ -17,8 +21,11 @@ class MainPageActivity : AppCompatActivity() {
     private lateinit var adsViewPager: ViewPager2
     private lateinit var adsPagerAdapter: AdsPagerAdapter
     private lateinit var dots: Array<ImageView?>
+    private lateinit var heartCheckBox1: CheckBox // First CheckBox
+    private lateinit var heartCheckBox2: CheckBox // Second CheckBox
     private val adList = listOf(R.drawable.add1, R.drawable.add2, R.drawable.add3, R.drawable.add4)
 
+    @SuppressLint("WrongViewCast", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
@@ -29,6 +36,8 @@ class MainPageActivity : AppCompatActivity() {
         searchEditText = findViewById(R.id.searchEditText)
         searchIcon = findViewById(R.id.searchIcon)
         adsViewPager = findViewById(R.id.adsViewPager)
+        heartCheckBox1 = findViewById(R.id.heartIcon1) // Initialize first CheckBox
+        heartCheckBox2 = findViewById(R.id.heartIcon2) // Initialize second CheckBox
 
         // Set up the ads adapter
         adsPagerAdapter = AdsPagerAdapter(adList)
@@ -47,6 +56,30 @@ class MainPageActivity : AppCompatActivity() {
 
         // Setup other listeners
         setupListeners()
+
+        heartCheckBox1.setOnCheckedChangeListener { _, isChecked ->
+            val color = if (isChecked) {
+                ContextCompat.getColor(this, R.color.orange) // Change to selected color
+            } else {
+                ContextCompat.getColor(this, R.color.dark_icon) // Change to unselected color
+            }
+            heartCheckBox1.buttonTintList = ColorStateList.valueOf(color) // Change the color of the checkbox
+
+            // Change the icon based on selection state
+            heartCheckBox1.setBackgroundResource(if (isChecked) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
+        }
+
+        heartCheckBox2.setOnCheckedChangeListener { _, isChecked ->
+            val color = if (isChecked) {
+                ContextCompat.getColor(this, R.color.orange) // Change to selected color
+            } else {
+                ContextCompat.getColor(this, R.color.dark_icon) // Change to unselected color
+            }
+            heartCheckBox2.buttonTintList = ColorStateList.valueOf(color) // Change the color of the checkbox
+
+            // Change the icon based on selection state
+            heartCheckBox2.setBackgroundResource(if (isChecked) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
+        }
     }
 
     private fun setupDotsIndicator() {

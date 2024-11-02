@@ -39,5 +39,11 @@
     <string name="category_sports">category_sports</string>
     <string name="category_cosmetics">category_cosmetics</string>
     <string name="special_for_you">Special for you</string>
+    <string name="item_1">Push Active Earbuds</string>
+    <string name="push_active_earbuds">Push Active Earbuds</string>
+    <string name="price_1">$79.99</string>
+    <string name="item_2">Item 2</string>
+    <string name="pahajim_shoulder_bag">Pahajim Shoulder Bag</string>
+    <string name="price_2">$62.90</string>
 
 </resources>

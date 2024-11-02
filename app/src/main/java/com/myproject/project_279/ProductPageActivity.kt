@@ -65,4 +65,5 @@ class ProductPageActivity : AppCompatActivity() {
         // Update the activeTab to the currently selected tab
         activeTab = selectedTab
     }
+
 }

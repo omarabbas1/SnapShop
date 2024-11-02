@@ -6,4 +6,7 @@
     <color name="orange">#EF7757</color>
     <color name="light_orange">#f6b19f</color>
     <color name="dark_gray">#546E7A</color>
+    <color name="gold">#F0BA58</color>
+    <color name="light_gray">#E3E3E3</color>
+    <color name="dark_icon">#49454f</color>
 </resources>

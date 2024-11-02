@@ -15,9 +15,45 @@
     <string name="don_t_have_an_account_sign_up">Don’t have an Account? Sign up</string>
     <string name="phone_number">Phone Number</string>
     <string name="phone_icon">phone icon</string>
-    <string name="phone_number_example">+961 00-000 000</string>
+    <string name="phone_number_example">+961 00–000 000</string>
     <string name="confirm_password">Confirm password</string>
     <string name="re_enter_your_password">re-enter your password</string>
     <string name="create_account">Create Account</string>
     <string name="already_have_an_account_sign_in">Already have an Account? Sign in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="profile_icon">profile_icon</string>
+    <string name="username">Tracy</string>
+    <string name="search_icon">search icon</string>
+    <string name="search">Search</string>
+    <string name="add1">add1</string>
+    <string name="ads_viewpager_description">Advertisement view pager</string>
+    <string name="join_as_guest">Join as Tracy</string>
+    <string name="ad_image">ad image</string>
+    <string name="category_fashion">category_fashion</string>
+    <string name="fashion">Fashion</string>
+    <string name="electronics">Electronics</string>
+    <string name="shoes">Shoes</string>
+    <string name="sports">Sports</string>
+    <string name="cosmetics">Cosmetics</string>
+    <string name="category_shoes">category_shoes</string>
+    <string name="category_electronics">category_electronics</string>
+    <string name="category_sports">category_sports</string>
+    <string name="category_cosmetics">category_cosmetics</string>
+    <string name="special_for_you">Special for you</string>
+    <string name="item_1">Push Active Earbuds</string>
+    <string name="push_active_earbuds">Push Active Earbuds</string>
+    <string name="price_1">$79.99</string>
+    <string name="item_2">Item 2</string>
+    <string name="pahajim_shoulder_bag">Pahajim Shoulder Bag</string>
+    <string name="price_2">$62.90</string>
+    <string name="home">home</string>
+    <string name="favorite">favorite</string>
+    <string name="scan">scan</string>
+    <string name="cart">cart</string>
+    <string name="profile">profile</string>
+
+
 </resources>

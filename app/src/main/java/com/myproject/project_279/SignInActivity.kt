@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.text.method.LinkMovementMethod
+import android.widget.Button
 
 class SignInActivity : AppCompatActivity() {
 
@@ -51,5 +52,12 @@ class SignInActivity : AppCompatActivity() {
 
         // Make the TextView clickable for the "Sign up" part
         signUpText.movementMethod = LinkMovementMethod.getInstance()
+
+        val btnLogIn = findViewById<Button>(R.id.btnLogIn)
+        btnLogIn.setOnClickListener {
+            // Navigate to HomeActivity (or any other activity)
+            val intent = Intent(this@SignInActivity, MainPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

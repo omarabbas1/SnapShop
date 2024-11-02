@@ -69,5 +69,12 @@ class SignUpActivity : AppCompatActivity() {
 
         // Make the TextView clickable for the "Sign in" part
         signInText.movementMethod = LinkMovementMethod.getInstance()
+
+        val btnCreateAccounte = findViewById<Button>(R.id.btnCreateAccount)
+        btnCreateAccounte.setOnClickListener {
+            // Navigate to HomeActivity (or any other activity)
+            val intent = Intent(this@SignUpActivity, MainPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -72,4 +72,31 @@
 
 
 
+    <!-- activity_main.xml -->
+
+
+    <Button
+        android:id="@+id/btnGuest"
+        android:layout_width="234dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/light_blue"
+        android:padding="10dp"
+        android:text="@string/join_as_guest"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
+        app:layout_constraintWidth_percent="0.8"
+        tools:ignore="MissingConstraints" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

@@ -26,7 +26,7 @@
     <string name="search">Search</string>
     <string name="add1">add1</string>
     <string name="ads_viewpager_description">Advertisement view pager</string>
-    <string name="join_as_guest">Join as Guest</string>
+    <string name="join_as_guest">Join as Tracy</string>
     <string name="ad_image">ad image</string>
     <string name="category_fashion">category_fashion</string>
     <string name="fashion">Fashion</string>
@@ -45,5 +45,10 @@
     <string name="item_2">Item 2</string>
     <string name="pahajim_shoulder_bag">Pahajim Shoulder Bag</string>
     <string name="price_2">$62.90</string>
+    <string name="home">home</string>
+    <string name="favorite">favorite</string>
+    <string name="scan">scan</string>
+    <string name="cart">cart</string>
+    <string name="profile">profile</string>
 
 </resources>

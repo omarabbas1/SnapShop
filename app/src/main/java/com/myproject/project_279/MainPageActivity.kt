@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -23,6 +24,11 @@ class MainPageActivity : AppCompatActivity() {
     private lateinit var dots: Array<ImageView?>
     private lateinit var heartCheckBox1: CheckBox // First CheckBox
     private lateinit var heartCheckBox2: CheckBox // Second CheckBox
+    private lateinit var buttonHome: ImageButton
+    private lateinit var buttonFavorite: ImageButton
+    private lateinit var buttonScan: ImageButton
+    private lateinit var buttonCart: ImageButton
+    private lateinit var buttonProfile: ImageButton
     private val adList = listOf(R.drawable.add1, R.drawable.add2, R.drawable.add3, R.drawable.add4)
 
     @SuppressLint("WrongViewCast", "MissingInflatedId")
@@ -38,6 +44,11 @@ class MainPageActivity : AppCompatActivity() {
         adsViewPager = findViewById(R.id.adsViewPager)
         heartCheckBox1 = findViewById(R.id.heartIcon1) // Initialize first CheckBox
         heartCheckBox2 = findViewById(R.id.heartIcon2) // Initialize second CheckBox
+        buttonHome = findViewById(R.id.button_home)
+        buttonFavorite = findViewById(R.id.button_favorite)
+        buttonScan = findViewById(R.id.button_scan)
+        buttonCart = findViewById(R.id.button_cart)
+        buttonProfile = findViewById(R.id.button_profile)
 
         // Set up the ads adapter
         adsPagerAdapter = AdsPagerAdapter(adList)
@@ -79,6 +90,21 @@ class MainPageActivity : AppCompatActivity() {
 
             // Change the icon based on selection state
             heartCheckBox2.setBackgroundResource(if (isChecked) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
+        }
+        buttonHome.setOnClickListener {
+            // Handle home action
+        }
+        buttonFavorite.setOnClickListener {
+            // Handle favorite action
+        }
+        buttonScan.setOnClickListener {
+            // Handle scan action
+        }
+        buttonCart.setOnClickListener {
+            // Handle cart action
+        }
+        buttonProfile.setOnClickListener {
+            // Handle profile action
         }
     }
 

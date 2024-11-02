@@ -96,7 +96,6 @@
                 android:hint="@string/search"
                 android:inputType="text|textAutoComplete"
                 android:paddingStart="8dp"
-                android:textStyle="bold"
                 tools:ignore="RtlSymmetry,TouchTargetSizeCheck,TextContrastCheck" />
         </LinearLayout>
 
@@ -423,6 +422,78 @@
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
+        <!-- Menu Bar -->
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_menu"
+            android:padding="8dp"
+            tools:ignore="VisualLintBounds">
+
+            <!-- Home Button-->
+            <ImageButton
+                android:id="@+id/button_home"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/home"
+                android:src="@drawable/home"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <!-- Favorite Button-->
+            <ImageButton
+                android:id="@+id/button_favorite"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/favorite"
+                android:src="@drawable/favorite"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+            <!-- Scan Button-->
+            <ImageButton
+                android:id="@+id/button_scan"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/scan"
+                android:src="@drawable/scan"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+            <!-- Cart Button-->
+            <ImageButton
+                android:id="@+id/button_cart"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/cart"
+                android:src="@drawable/cart"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+            <!-- Profile Button-->
+            <ImageButton
+                android:id="@+id/button_profile"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/profile"
+                android:src="@drawable/profile"
+                tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
+        </LinearLayout>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -79,5 +79,5 @@
         app:layout_constraintWidth_percent="0.8"
         tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.constraintlayout.widget.ConstraintLayout>

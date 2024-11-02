@@ -12,7 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PROJECT_279"
         tools:targetApi="31">
-
+        <activity
+            android:name=".UploadPage"
+            android:exported="false" />
+        <activity
+            android:name=".editpropage"
+            android:exported="false" />
+        <activity android:name=".ProfilePage" />
+        <activity android:name=".EditProfilePage" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />

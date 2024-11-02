@@ -28,5 +28,16 @@
     <string name="ads_viewpager_description">Advertisement view pager</string>
     <string name="join_as_guest">Join as Guest</string>
     <string name="ad_image">ad image</string>
+    <string name="category_fashion">category_fashion</string>
+    <string name="fashion">Fashion</string>
+    <string name="electronics">Electronics</string>
+    <string name="shoes">Shoes</string>
+    <string name="sports">Sports</string>
+    <string name="cosmetics">Cosmetics</string>
+    <string name="category_shoes">category_shoes</string>
+    <string name="category_electronics">category_electronics</string>
+    <string name="category_sports">category_sports</string>
+    <string name="category_cosmetics">category_cosmetics</string>
+    <string name="special_for_you">Special for you</string>
 
 </resources>

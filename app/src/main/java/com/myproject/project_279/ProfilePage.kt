@@ -3,6 +3,7 @@ package com.myproject.project_279
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -21,6 +22,28 @@ class ProfilePage : AppCompatActivity() {
             // Navigate to UploadPage
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
+        }
+
+        findViewById<ImageButton>(R.id.homeButton).setOnClickListener {
+            // Navigate to Home page
+            startActivity(Intent(this, MainPageActivity::class.java))
+        }
+
+        findViewById<ImageButton>(R.id.FavoriteButton).setOnClickListener {
+            // Navigate to Favorite page
+
+        }
+
+        findViewById<ImageButton>(R.id.ScanButton).setOnClickListener {
+            // Navigate to Scan page
+            startActivity(Intent(this, ProductPageActivity::class.java))
+        }
+
+
+
+        findViewById<ImageButton>(R.id.CartButton).setOnClickListener {
+            // Navigate to Profile page
+            startActivity(Intent(this, CartFragment::class.java))
         }
 
     }

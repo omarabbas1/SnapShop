@@ -1,9 +1,11 @@
 package com.myproject.project_279
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -26,6 +28,33 @@ class ChangePasswordActivity : AppCompatActivity() {
         setupPasswordToggle(etOldPassword)
         setupPasswordToggle(etNewPassword)
         setupPasswordToggle(etReEnterNewPassword)
+
+        findViewById<ImageButton>(R.id.back_button).setOnClickListener {
+            // Navigate to Home page
+            startActivity(Intent(this, ProfilePage::class.java))
+        }
+
+        findViewById<ImageButton>(R.id.home_button).setOnClickListener {
+            // Navigate to Home page
+            startActivity(Intent(this, MainPageActivity::class.java))
+        }
+
+        findViewById<ImageButton>(R.id.favorite_button).setOnClickListener {
+            // Navigate to Favorite page
+
+        }
+
+        findViewById<ImageButton>(R.id.scan_button).setOnClickListener {
+            // Navigate to Scan page
+            startActivity(Intent(this, ProductPageActivity::class.java))
+        }
+
+
+
+        findViewById<ImageButton>(R.id.shop_button).setOnClickListener {
+            // Navigate to Profile page
+            startActivity(Intent(this, CartFragment::class.java))
+        }
     }
 
     private fun setupPasswordToggle(editText: EditText) {
@@ -39,6 +68,7 @@ class ChangePasswordActivity : AppCompatActivity() {
             }
             false
         }
+
     }
 
     private fun togglePasswordVisibility(editText: EditText) {

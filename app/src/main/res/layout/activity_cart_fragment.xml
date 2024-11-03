@@ -123,7 +123,8 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Home"
-            android:src="@drawable/ic_home" />
+            android:src="@drawable/ic_home"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/favorite_button"
@@ -132,7 +133,8 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Favorite"
-            android:src="@drawable/ic_favorite" />
+            android:src="@drawable/ic_favorite"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/scan_button"
@@ -150,7 +152,8 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Shop"
-            android:src="@drawable/ic_shop" />
+            android:src="@drawable/ic_shop"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <ImageButton
             android:id="@+id/profile_button"
@@ -159,6 +162,7 @@
             android:layout_weight="1"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Profile"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/ic_profile"
+            tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,10 @@
 
 
         <activity android:name=".ProfilePage" />
+        <activity android:name=".OrderDetailActivity" />
+
+        <activity android:name=".UploadPage" />
+
 
 
 

@@ -1,5 +1,6 @@
 package com.myproject.project_279
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -52,6 +53,10 @@ class ProductPageActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.addToCartButton).setOnClickListener {
             // Code to add item to cart
+        }
+        findViewById<Button>(R.id.addToCartButton).setOnClickListener {
+            // Navigate to Scan page
+            startActivity(Intent(this, CartFragment::class.java))
         }
     }
 

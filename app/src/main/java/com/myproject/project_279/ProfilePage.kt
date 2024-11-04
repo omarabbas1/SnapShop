@@ -23,16 +23,18 @@ class ProfilePage : AppCompatActivity() {
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
         }
+        findViewById<ImageButton>(R.id.FavoriteButton).setOnClickListener {
+            // Navigate to UploadPage
+            val intent = Intent(this,FavoritesActivity::class.java)
+            startActivity(intent)
+        }
 
         findViewById<ImageButton>(R.id.homeButton).setOnClickListener {
             // Navigate to Home page
             startActivity(Intent(this, MainPageActivity::class.java))
         }
 
-        findViewById<ImageButton>(R.id.FavoriteButton).setOnClickListener {
-            // Navigate to Favorite page
 
-        }
 
         findViewById<ImageButton>(R.id.ScanButton).setOnClickListener {
             // Navigate to Scan page

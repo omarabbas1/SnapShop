@@ -24,6 +24,7 @@ class CartFragment : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.favorite_button).setOnClickListener {
             // Navigate to Favorite page
+            startActivity(Intent(this, FavoritesActivity::class.java))
 
         }
 

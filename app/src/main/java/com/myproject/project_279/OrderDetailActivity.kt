@@ -1,5 +1,6 @@
 package com.myproject.project_279
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
@@ -20,5 +21,6 @@ class OrderDetailActivity : AppCompatActivity() {
             // Finish the activity to go back to the previous screen
             finish()
         }
+
     }
 }

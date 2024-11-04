@@ -41,6 +41,8 @@ class ChangePasswordActivity : AppCompatActivity() {
 
         findViewById<ImageButton>(R.id.favorite_button).setOnClickListener {
             // Navigate to Favorite page
+            val intent = Intent(this,FavoritesActivity::class.java)
+            startActivity(intent)
 
         }
 

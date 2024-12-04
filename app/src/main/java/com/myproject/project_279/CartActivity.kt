@@ -16,10 +16,7 @@ import com.myproject.project_279.Item
 
 class CartActivity : AppCompatActivity() {
 
-    private lateinit var searchResultsRecyclerView: RecyclerView
-    private lateinit var searchAdapter: SearchAdapter
-    private lateinit var searchInput: EditText
-    private lateinit var searchButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,44 +45,9 @@ class CartActivity : AppCompatActivity() {
         }
 
         // Handle search functionality
-        searchResultsRecyclerView = findViewById(R.id.items_recycler_view)
-        searchInput = findViewById(R.id.location_search)
-        searchButton = findViewById(R.id.search_button)
 
-        searchResultsRecyclerView.layoutManager = LinearLayoutManager(this)
-        searchAdapter = SearchAdapter(listOf())  // Empty list initially
-        searchResultsRecyclerView.adapter = searchAdapter
-
-        searchButton.setOnClickListener {
-            val query = searchInput.text.toString()
-            if (query.isNotEmpty()) {
-                searchItems(query)
-            } else {
-                Toast.makeText(this, "Please enter a search query", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
-    private fun searchItems(query: String) {
-        val call = ApiClient.retrofitService.searchItems(query)
-        call.enqueue(object : Callback<SearchResponse> {
-            override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
-                if (response.isSuccessful) {
-                    val searchResponse = response.body()
-                    if (searchResponse != null && searchResponse.items.isNotEmpty()) {
-                        searchAdapter.updateItems(searchResponse.items)
-                    } else {
-                        Toast.makeText(this@CartActivity, "No items found", Toast.LENGTH_SHORT).show()
-                    }
-                } else {
-                    Toast.makeText(this@CartActivity, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
-                }
-            }
 
-            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
-                Toast.makeText(this@CartActivity, "Failed: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
 
 }

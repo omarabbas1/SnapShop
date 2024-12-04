@@ -1,9 +1,11 @@
 package com.myproject.project_279
 
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -11,11 +13,22 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MainPageActivity : AppCompatActivity() {
+    private lateinit var searchResultsRecyclerView: RecyclerView
+    private lateinit var searchAdapter: SearchAdapter
+    private lateinit var searchInput: EditText
+    private lateinit var searchButton: Button
+
 
     private lateinit var profileImageView: ImageView
     private lateinit var usernameTextView: TextView
@@ -33,12 +46,15 @@ class MainPageActivity : AppCompatActivity() {
     private lateinit var buttonProfile: ImageButton
     private val adList = listOf(R.drawable.add1, R.drawable.add2, R.drawable.add3, R.drawable.add4)
 
+    // Save state variables
+    private var searchText: String? = null
+    private var isHeart1Checked: Boolean = false
+    private var isHeart2Checked: Boolean = false
+
     @SuppressLint("WrongViewCast", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
-
-
 
         // Initialize views
         profileImageView = findViewById(R.id.imageView)
@@ -82,6 +98,7 @@ class MainPageActivity : AppCompatActivity() {
 
             // Change the icon based on selection state
             heartCheckBox1.setBackgroundResource(if (isChecked) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
+            isHeart1Checked = isChecked
         }
 
         heartCheckBox2.setOnCheckedChangeListener { _, isChecked ->
@@ -94,7 +111,9 @@ class MainPageActivity : AppCompatActivity() {
 
             // Change the icon based on selection state
             heartCheckBox2.setBackgroundResource(if (isChecked) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
+            isHeart2Checked = isChecked
         }
+
         buttonHome.setOnClickListener {
             // Handle home action
         }
@@ -118,9 +137,89 @@ class MainPageActivity : AppCompatActivity() {
             val intent = Intent(this@MainPageActivity, ProfilePage::class.java)
             startActivity(intent)
         }
+        val fashionImageView = findViewById<ImageView>(R.id.category_fashion)
+        fashionImageView.setOnClickListener {
+            val intent = Intent(this@MainPageActivity, FashionCategoryActivity::class.java)
+            startActivity(intent)
+        }
+        val ShoesImageView = findViewById<ImageView>(R.id.category_shoes)
+        ShoesImageView.setOnClickListener {
+            val intent = Intent(this@MainPageActivity, ShoesCategoryActivity::class.java)
+            startActivity(intent)
+        }
+        val ElectronicImageView = findViewById<ImageView>(R.id.category_electronics)
+        ElectronicImageView.setOnClickListener {
+            val intent = Intent(this@MainPageActivity, ElectronicsCategoryActivity::class.java)
+            startActivity(intent)
+        }
+        val SportImageView = findViewById<ImageView>(R.id.category_sports)
+        SportImageView.setOnClickListener {
+            val intent = Intent(this@MainPageActivity, SportsCategoryActivity::class.java)
+            startActivity(intent)
+        }
+        val CosmeticImageView = findViewById<ImageView>(R.id.category_cosmetics)
+        CosmeticImageView.setOnClickListener {
+            val intent = Intent(this@MainPageActivity, CosmeticsCategoryActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+        // Inside MainPageActivity, where the search icon is clicked
+        searchIcon.setOnClickListener {
+            val searchText = searchEditText.text.toString()
+            if (searchText.isNotEmpty()) {
+                val intent = Intent(this@MainPageActivity, SearchResultsActivity::class.java)
+                intent.putExtra("SEARCH_QUERY", searchText)  // Pass the search query to the next activity
+                startActivity(intent)
+            }
+        }
+
 
     }
 
+    private fun searchItems(query: String) {
+        val call = ApiClient.retrofitService.searchItems(query)
+        call.enqueue(object : Callback<SearchResponse> {
+            override fun onResponse(call: Call<SearchResponse>, response: Response<SearchResponse>) {
+                if (response.isSuccessful) {
+                    val searchResponse = response.body()
+                    if (searchResponse != null && searchResponse.items.isNotEmpty()) {
+                        searchAdapter.updateItems(searchResponse.items)
+                    } else {
+                        Toast.makeText(this@MainPageActivity, "No items found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this@MainPageActivity, "Error: ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
+                Toast.makeText(this@MainPageActivity, "Failed: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+
+    // Save instance state when activity is paused or destroyed
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString("SEARCH_TEXT", searchEditText.text.toString())
+        outState.putBoolean("HEART1_CHECKED", heartCheckBox1.isChecked)
+        outState.putBoolean("HEART2_CHECKED", heartCheckBox2.isChecked)
+    }
+
+    // Restore saved instance state when activity is recreated
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        searchText = savedInstanceState.getString("SEARCH_TEXT")
+        isHeart1Checked = savedInstanceState.getBoolean("HEART1_CHECKED")
+        isHeart2Checked = savedInstanceState.getBoolean("HEART2_CHECKED")
+        searchEditText.setText(searchText)
+        heartCheckBox1.isChecked = isHeart1Checked
+        heartCheckBox2.isChecked = isHeart2Checked
+    }
 
     private fun setupDotsIndicator() {
         val dotsIndicator = findViewById<LinearLayout>(R.id.dotsIndicator)
@@ -159,5 +258,4 @@ class MainPageActivity : AppCompatActivity() {
             // Handle profile image click
         }
     }
-
 }

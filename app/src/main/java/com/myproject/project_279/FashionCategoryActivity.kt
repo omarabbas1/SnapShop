@@ -1,11 +1,8 @@
 package com.myproject.project_279
 
-import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.widget.BaseAdapter
-import android.widget.ImageButton
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
@@ -15,7 +12,6 @@ import com.bumptech.glide.Glide
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
-import java.net.URL
 
 class FashionCategoryActivity : AppCompatActivity() {
 
@@ -28,22 +24,13 @@ class FashionCategoryActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.fashionItemsListView)
 
-        // Assuming you're passing the category from a previous activity
         val category = intent.getStringExtra("category") ?: "fashion"
-
-        // Fetch fashion items based on the selected category
         fetchItemsByCategory(category)
-
-
-
-
-
     }
 
     private fun fetchItemsByCategory(category: String) {
-        // Use the correct URL for your category items
         val request = Request.Builder()
-            .url("http://10.0.2.2:8000/api/items/$category") // Fetch items for the selected category
+            .url("http://10.0.2.2:8000/api/items/$category")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -67,18 +54,16 @@ class FashionCategoryActivity : AppCompatActivity() {
                             val itemPrice = item.getString("price")
                             val itemImageUrl = item.getString("image_url")
 
-                            // Add the item to the list
                             itemsList.add(Item(itemName, itemPrice, itemImageUrl))
                         }
 
-                        // Update the ListView on the main thread
                         runOnUiThread {
                             val adapter = FashionItemAdapter(this@FashionCategoryActivity, itemsList)
                             listView.adapter = adapter
                         }
                     } else {
                         runOnUiThread {
-                            Toast.makeText(this@FashionCategoryActivity, "No items found for category", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@FashionCategoryActivity, "No items found", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -86,44 +71,45 @@ class FashionCategoryActivity : AppCompatActivity() {
         })
     }
 
-    // Item data class to store the item details
-    data class Item(val name: String, val price: String, val imageUrl: String)
+//    data class Item(val name: String, val price: String, val imageUrl: String)
 
-    // Custom adapter for ListView
     inner class FashionItemAdapter(private val context: FashionCategoryActivity, private val items: List<Item>) :
         BaseAdapter() {
 
-        override fun getCount(): Int {
-            return items.size
-        }
+        override fun getCount(): Int = items.size
 
-        override fun getItem(position: Int): Any {
-            return items[position]
-        }
+        override fun getItem(position: Int): Any = items[position]
 
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
+        override fun getItemId(position: Int): Long = position.toLong()
 
         override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
             val view = convertView ?: layoutInflater.inflate(R.layout.list_item_fashion, parent, false)
 
             val item = items[position]
-
-            // Set the item details to the views
             val itemNameTextView: TextView = view.findViewById(R.id.itemName)
             val itemPriceTextView: TextView = view.findViewById(R.id.itemPrice)
             val itemImageView: ImageView = view.findViewById(R.id.itemImg)
+            val heartIcon: CheckBox = view.findViewById(R.id.heartIcon)
 
             itemNameTextView.text = item.name
             itemPriceTextView.text = "$${item.price}"
 
-            // Use Glide to load the image from URL
             Glide.with(context)
-                .load("http://10.0.2.2:8000" + item.imageUrl)  // Full URL from the backend
-                .placeholder(R.drawable.add1)  // A default placeholder image
+                .load("http://10.0.2.2:8000" + item.imageUrl)
+                .placeholder(R.drawable.add1)
                 .into(itemImageView)
 
+            heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
+
+            heartIcon.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    FavoritesHelper.addFavorite(context, item)
+                    Toast.makeText(context, "${item.name} added to favorites", Toast.LENGTH_SHORT).show()
+                } else {
+                    FavoritesHelper.removeFavorite(context, item)
+                    Toast.makeText(context, "${item.name} removed from favorites", Toast.LENGTH_SHORT).show()
+                }
+            }
 
             return view
         }

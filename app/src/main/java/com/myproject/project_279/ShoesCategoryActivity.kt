@@ -1,20 +1,13 @@
 package com.myproject.project_279
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-
-
-
-
 import android.widget.BaseAdapter
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
-
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import okhttp3.*
 import org.json.JSONObject
@@ -36,7 +29,6 @@ class ShoesCategoryActivity : AppCompatActivity() {
     }
 
     private fun fetchItemsByCategory(category: String) {
-        // Use the correct URL for the "shoes" category items
         val request = Request.Builder()
             .url("http://10.0.2.2:8000/api/items/$category") // Fetch items for shoes category
             .build()
@@ -81,12 +73,12 @@ class ShoesCategoryActivity : AppCompatActivity() {
         })
     }
 
-    // Item data class to store the item details
-    data class Item(val name: String, val price: String, val imageUrl: String)
+//    data class Item(val name: String, val price: String, val imageUrl: String)
 
-    // Custom adapter for ListView
-    inner class ShoesItemAdapter(private val context: ShoesCategoryActivity, private val items: List<Item>) :
-        BaseAdapter() {
+    inner class ShoesItemAdapter(
+        private val context: ShoesCategoryActivity,
+        private val items: List<Item>
+    ) : BaseAdapter() {
 
         override fun getCount(): Int {
             return items.size
@@ -109,15 +101,29 @@ class ShoesCategoryActivity : AppCompatActivity() {
             val itemNameTextView: TextView = view.findViewById(R.id.itemName)
             val itemPriceTextView: TextView = view.findViewById(R.id.itemPrice)
             val itemImageView: ImageView = view.findViewById(R.id.itemImg)
+            val heartIcon: CheckBox = view.findViewById(R.id.heartIcon)
 
             itemNameTextView.text = item.name
             itemPriceTextView.text = "$${item.price}"
 
-            // Use Glide to load the image from URL
             Glide.with(context)
-                .load("http://10.0.2.2:8000" + item.imageUrl)  // Full URL from the backend
-                .placeholder(R.drawable.add1)  // A default placeholder image
+                .load("http://10.0.2.2:8000" + item.imageUrl)
+                .placeholder(R.drawable.add1)
                 .into(itemImageView)
+
+            // Set the CheckBox state based on whether the item is in favorites
+            heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
+
+            // Toggle favorite status when CheckBox is clicked
+            heartIcon.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    FavoritesHelper.addFavorite(context, item)
+                    Toast.makeText(context, "${item.name} added to favorites", Toast.LENGTH_SHORT).show()
+                } else {
+                    FavoritesHelper.removeFavorite(context, item)
+                    Toast.makeText(context, "${item.name} removed from favorites", Toast.LENGTH_SHORT).show()
+                }
+            }
 
             return view
         }

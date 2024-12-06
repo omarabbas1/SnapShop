@@ -76,9 +76,11 @@ class CartFragment : AppCompatActivity() {
             proceedButton.visibility = View.GONE  // Hide the proceed button when cart is empty
         }
 
-        // Proceed to Checkout button click listener
         proceedButton.setOnClickListener {
-            startActivity(Intent(this, CartActivity::class.java)) // Navigate to CartActivity
+            // Pass cart items to the CheckoutActivity
+            val checkoutIntent = Intent(this, CartActivity::class.java)
+            checkoutIntent.putParcelableArrayListExtra("cartItems", ArrayList(cartItems))
+            startActivity(checkoutIntent)
         }
 
         // Return button click listener

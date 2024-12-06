@@ -74,7 +74,6 @@ class CosmeticsCategoryActivity : AppCompatActivity() {
         })
     }
 
-//    data class Item(val name: String, val price: String, val imageUrl: String)
 
     inner class CosmeticsItemAdapter(
         private val context: CosmeticsCategoryActivity,

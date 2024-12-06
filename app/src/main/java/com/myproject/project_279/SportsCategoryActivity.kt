@@ -74,7 +74,6 @@ class SportsCategoryActivity : AppCompatActivity() {
         })
     }
 
-//    data class Item(val name: String, val price: String, val imageUrl: String)
 
     inner class SportsItemAdapter(private val context: SportsCategoryActivity, private val items: List<Item>) :
         BaseAdapter() {

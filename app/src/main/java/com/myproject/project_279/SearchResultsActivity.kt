@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 
 
 import android.widget.BaseAdapter
+import android.widget.Button
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
@@ -47,7 +49,7 @@ class SearchResultsActivity : AppCompatActivity() {
             .url("http://10.0.2.2:8000/search/$query") // Correct search endpoint
             .build()
 
-        client.newCall(request).enqueue(object : okhttp3.Callback { // OkHttp's callback
+        client.newCall(request).enqueue(object : okhttp3.Callback {
             override fun onFailure(call: Call, e: IOException) {
                 e.printStackTrace()
                 runOnUiThread {
@@ -56,54 +58,39 @@ class SearchResultsActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    response.body?.let { responseBody ->
-                        try {
-                            val jsonResponse = JSONObject(responseBody.string())
-                            val itemsList = mutableListOf<Item>()
+                response.body?.let { responseBody ->
+                    val jsonResponse = JSONObject(responseBody.string())
+                    val itemsList = mutableListOf<Item>()
 
-                            if (jsonResponse.has("items")) {
-                                val items = jsonResponse.getJSONArray("items")
-                                for (i in 0 until items.length()) {
-                                    val item = items.getJSONObject(i)
-                                    val itemName = item.optString("name", "Unknown") // Default values for safety
-                                    val itemPrice = item.optString("price", "0")
-                                    val itemImageUrl = item.optString("image_url", "")
+                    if (jsonResponse.has("items")) {
+                        val items = jsonResponse.getJSONArray("items")
+                        for (i in 0 until items.length()) {
+                            val item = items.getJSONObject(i)
+                            val itemName = item.getString("name")
+                            val itemPrice = item.getString("price")
+                            val itemImageUrl = item.getString("image_url")
 
-                                    itemsList.add(Item(itemName, itemPrice, itemImageUrl))
-                                }
-
-                                // Update the ListView on the main thread
-                                runOnUiThread {
-                                    val adapter = SearchItemAdapter(this@SearchResultsActivity, itemsList)
-                                    listView.adapter = adapter
-                                }
-                            } else {
-                                runOnUiThread {
-                                    Toast.makeText(this@SearchResultsActivity, "No items found", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                            runOnUiThread {
-                                Toast.makeText(this@SearchResultsActivity, "Error parsing response", Toast.LENGTH_SHORT).show()
-                            }
+                            itemsList.add(Item(itemName, itemPrice, itemImageUrl))
                         }
-                    }
-                } else {
-                    runOnUiThread {
-                        Toast.makeText(this@SearchResultsActivity, "Request failed", Toast.LENGTH_SHORT).show()
+
+                        runOnUiThread {
+                            val adapter = SearchItemAdapter(this@SearchResultsActivity, itemsList)
+                            listView.adapter = adapter
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(this@SearchResultsActivity, "No items found", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }
         })
     }
 
-    // Item data class to store item details
-    data class Item(val name: String, val price: String, val imageUrl: String)
-
-    // Custom adapter for ListView
-    inner class SearchItemAdapter(private val context: SearchResultsActivity, private val items: List<Item>) : BaseAdapter() {
+    inner class SearchItemAdapter(
+        private val context: SearchResultsActivity,
+        private val items: List<Item>
+    ) : BaseAdapter() {
 
         override fun getCount(): Int {
             return items.size
@@ -122,22 +109,42 @@ class SearchResultsActivity : AppCompatActivity() {
 
             val item = items[position]
 
-            // Set the item details to the views
             val itemNameTextView: TextView = view.findViewById(R.id.itemName)
             val itemPriceTextView: TextView = view.findViewById(R.id.itemPrice)
             val itemImageView: ImageView = view.findViewById(R.id.itemImg)
+            val heartIcon: CheckBox = view.findViewById(R.id.heartIcon)
+            val addToCartButton: Button = view.findViewById(R.id.add_to_cart_button)
 
             itemNameTextView.text = item.name
             itemPriceTextView.text = "$${item.price}"
 
-            // Use Glide to load the image from URL
             Glide.with(context)
-                .load("http://10.0.2.2:8000" + item.imageUrl)  // Full URL from the backend
-                .placeholder(R.drawable.add1)  // A default placeholder image
-                .error(R.drawable.add2)  // Fallback image in case of error
+                .load("http://10.0.2.2:8000" + item.imageUrl)
+                .placeholder(R.drawable.add1)
                 .into(itemImageView)
+
+            // Set the CheckBox state based on whether the item is in favorites
+            heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
+
+            // Toggle favorite status when CheckBox is clicked
+            heartIcon.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    FavoritesHelper.addFavorite(context, item)
+                    Toast.makeText(context, "${item.name} added to favorites", Toast.LENGTH_SHORT).show()
+                } else {
+                    FavoritesHelper.removeFavorite(context, item)
+                    Toast.makeText(context, "${item.name} removed from favorites", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            // Handle Add to Cart Button
+            addToCartButton.setOnClickListener {
+                AddToCartHelper.addItemToCart(context, item) // Call the CartHelper to add to cart
+                Toast.makeText(context, "${item.name} added to cart", Toast.LENGTH_SHORT).show()
+            }
 
             return view
         }
     }
 }
+

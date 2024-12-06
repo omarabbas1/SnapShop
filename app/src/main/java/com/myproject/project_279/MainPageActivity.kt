@@ -122,11 +122,11 @@ class MainPageActivity : AppCompatActivity() {
             startActivity(intent)
             // Handle favorite action
         }
-        buttonScan.setOnClickListener {
-            // Handle scan action
-            val intent = Intent(this@MainPageActivity, ProductPageActivity::class.java)
-            startActivity(intent)
-        }
+//        buttonScan.setOnClickListener {
+//            // Handle scan action
+//            val intent = Intent(this@MainPageActivity, ProductPageActivity::class.java)
+//            startActivity(intent)
+//        }
         buttonCart.setOnClickListener {
             // Handle cart action
             val intent = Intent(this@MainPageActivity, CartFragment::class.java)
@@ -169,12 +169,11 @@ class MainPageActivity : AppCompatActivity() {
         searchIcon.setOnClickListener {
             val searchText = searchEditText.text.toString()
             if (searchText.isNotEmpty()) {
-                val intent = Intent(this@MainPageActivity, SearchResultsActivity::class.java)
+                val intent = Intent(this, SearchResultsActivity::class.java)
                 intent.putExtra("SEARCH_QUERY", searchText)  // Pass the search query to the next activity
                 startActivity(intent)
             }
         }
-
 
     }
 

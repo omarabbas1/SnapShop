@@ -74,7 +74,6 @@ class ElectronicsCategoryActivity : AppCompatActivity() {
         })
     }
 
-//    data class Item(val name: String, val price: String, val imageUrl: String)
 
     inner class ElectronicsItemAdapter(
         private val context: ElectronicsCategoryActivity,

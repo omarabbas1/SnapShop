@@ -72,7 +72,6 @@ class FashionCategoryActivity : AppCompatActivity() {
         })
     }
 
-//    data class Item(val name: String, val price: String, val imageUrl: String)
 
     inner class FashionItemAdapter(private val context: FashionCategoryActivity, private val items: List<Item>) :
         BaseAdapter() {

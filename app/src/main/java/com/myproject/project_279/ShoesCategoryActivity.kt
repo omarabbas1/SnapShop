@@ -74,7 +74,6 @@ class ShoesCategoryActivity : AppCompatActivity() {
         })
     }
 
-//    data class Item(val name: String, val price: String, val imageUrl: String)
 
     inner class ShoesItemAdapter(
         private val context: ShoesCategoryActivity,

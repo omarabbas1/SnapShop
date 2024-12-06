@@ -2,6 +2,7 @@ package com.myproject.project_279
 
 import android.os.Bundle
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.ListView
@@ -102,6 +103,7 @@ class ShoesCategoryActivity : AppCompatActivity() {
             val itemPriceTextView: TextView = view.findViewById(R.id.itemPrice)
             val itemImageView: ImageView = view.findViewById(R.id.itemImg)
             val heartIcon: CheckBox = view.findViewById(R.id.heartIcon)
+            val addToCartButton: Button = view.findViewById(R.id.add_to_cart_button)
 
             itemNameTextView.text = item.name
             itemPriceTextView.text = "$${item.price}"
@@ -123,6 +125,12 @@ class ShoesCategoryActivity : AppCompatActivity() {
                     FavoritesHelper.removeFavorite(context, item)
                     Toast.makeText(context, "${item.name} removed from favorites", Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            // Handle Add to Cart Button
+            addToCartButton.setOnClickListener {
+                AddToCartHelper.addItemToCart(context, item) // Call the CartHelper to add to cart
+                Toast.makeText(context, "${item.name} added to cart", Toast.LENGTH_SHORT).show()
             }
 
             return view

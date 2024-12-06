@@ -39,13 +39,9 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <!-- Favorites Button -->
-<!--    <CheckBox-->
-<!--        android:id="@+id/heartIcon"-->
-<!--        android:layout_width="48dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_margin="8dp"-->
-<!--        android:backgroundTint="@android:color/transparent"-->
-<!--        android:button="@drawable/favorite_heart_selector" />-->
+    <Button
+        android:id="@+id/remove_from_favorites_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove" />
 </LinearLayout>

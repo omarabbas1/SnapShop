@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -20,7 +21,7 @@ class FavoritesAdapter(
         val itemName: TextView = itemView.findViewById(R.id.item_name)
         val itemPrice: TextView = itemView.findViewById(R.id.item_price)
         val itemImage: ImageView = itemView.findViewById(R.id.item_image)
-//        val favoriteCheckBox: CheckBox = itemView.findViewById(R.id.heartIcon)
+        val removeButton: Button = itemView.findViewById(R.id.remove_from_favorites_button)
 
         fun bind(item: Item) {
             itemName.text = item.name
@@ -32,14 +33,9 @@ class FavoritesAdapter(
                 .load(imageUrl)  // Glide will load the image from the complete URL
                 .into(itemImage)
 
-            // Set CheckBox state based on item.isFavorite
-//            favoriteCheckBox.isChecked = item.isFavorite
-//
-//            // Handle the checkbox state change
-//            favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
-//                item.isFavorite = isChecked
-//                onFavoriteClick(item)  // Notify that the item has been added/removed from favorites
-//            }
+            removeButton.setOnClickListener {
+                onFavoriteClick(item)  // Trigger the callback to remove item
+            }
         }
     }
 

@@ -33,6 +33,13 @@ class FavoritesActivity : AppCompatActivity() {
         // Fetch favorites from the FavoritesHelper
         favoriteItems = FavoritesHelper.getFavorites(this).toMutableList()
 
+        // Set up RecyclerView with the favorite items
+        val adapter = FavoritesAdapter(favoriteItems, this) { item ->
+            // Handle item removal
+            removeItemFromFavorites(item)
+        }
+        favoritesRecyclerView.layoutManager = LinearLayoutManager(this)
+        favoritesRecyclerView.adapter = adapter
 
         // Toggle visibility based on whether favorites exist
         if (favoriteItems.isNotEmpty()) {
@@ -41,23 +48,6 @@ class FavoritesActivity : AppCompatActivity() {
             emptyTextView.visibility = View.GONE
             subTextView.visibility = View.GONE
             returnButton.visibility = View.GONE
-
-            // Set up RecyclerView with the favorite items
-            val adapter = FavoritesAdapter(favoriteItems, this) { item ->
-                // Toggle favorite state when checkbox is clicked
-                item.isFavorite = !item.isFavorite
-
-                // Update favorites list in the data source
-                FavoritesHelper.saveFavorites(this, favoriteItems)
-
-                // Notify the adapter that an item has been updated
-                val position = favoriteItems.indexOf(item)
-                if (position != -1) {
-                    favoritesRecyclerView.adapter?.notifyItemChanged(position)
-                }
-            }
-            favoritesRecyclerView.layoutManager = LinearLayoutManager(this)
-            favoritesRecyclerView.adapter = adapter
         } else {
             favoritesRecyclerView.visibility = View.GONE
             emptyImageView.visibility = View.VISIBLE
@@ -88,4 +78,21 @@ class FavoritesActivity : AppCompatActivity() {
             startActivity(Intent(this, ProfilePage::class.java))
         }
     }
+
+    private fun removeItemFromFavorites(item: Item) {
+        // Remove the item from the favorites list and update UI
+        FavoritesHelper.removeFavorite(this, item)
+        favoriteItems.remove(item)
+        (favoritesRecyclerView.adapter as FavoritesAdapter).notifyDataSetChanged()
+
+        // Update visibility if no items are left
+        if (favoriteItems.isEmpty()) {
+            favoritesRecyclerView.visibility = View.GONE
+            emptyImageView.visibility = View.VISIBLE
+            emptyTextView.visibility = View.VISIBLE
+            subTextView.visibility = View.VISIBLE
+            returnButton.visibility = View.VISIBLE
+        }
+    }
 }
+

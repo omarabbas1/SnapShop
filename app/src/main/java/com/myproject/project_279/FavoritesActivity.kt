@@ -1,5 +1,6 @@
 package com.myproject.project_279
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -62,23 +63,24 @@ class FavoritesActivity : AppCompatActivity() {
         }
 
 
-        findViewById<ImageButton>(R.id.home_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.homeButton).setOnClickListener {
             startActivity(Intent(this, MainPageActivity::class.java))
         }
 
-        findViewById<ImageButton>(R.id.shop_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.CartButton).setOnClickListener {
             startActivity(Intent(this, CartFragment::class.java))
         }
 
-        findViewById<ImageButton>(R.id.scan_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.ScanButton).setOnClickListener {
             startActivity(Intent(this, ProductPageActivity::class.java))
         }
 
-        findViewById<ImageButton>(R.id.profile_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.ProfileButton).setOnClickListener {
             startActivity(Intent(this, ProfilePage::class.java))
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun removeItemFromFavorites(item: Item) {
         // Remove the item from the favorites list and update UI
         FavoritesHelper.removeFavorite(this, item)

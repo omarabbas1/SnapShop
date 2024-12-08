@@ -61,6 +61,15 @@
     <string name="scan">scan</string>
     <string name="cart">cart</string>
     <string name="profile">profile</string>
+    <string name="cart_item">Cart</string>
+    <string name="item_name">Item Name</string>
+    <string name="price">Price</string>
+    <string name="remove">Remove</string>
+    <string name="item">Item</string>
+    <string name="checkout">Checkout</string>
+    <string name="total">Total</string>
+    <string name="_62_90">$62.90</string>
+    <string name="aub_hamra_lebanon">AUB, Hamra, Lebanon</string>
 
 
 </resources>

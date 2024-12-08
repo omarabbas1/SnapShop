@@ -43,5 +43,6 @@
         android:id="@+id/remove_from_favorites_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/orange"
         android:text="Remove" />
 </LinearLayout>

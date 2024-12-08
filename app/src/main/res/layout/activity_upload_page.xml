@@ -164,21 +164,6 @@
         app:layout_constraintVertical_bias="0.629" />
 
     <Button
-        android:id="@+id/changePassword2"
-        android:layout_width="344dp"
-        android:layout_height="53dp"
-        android:backgroundTint="@color/light_blue"
-        android:text=""
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.983"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
         android:id="@+id/signOutButton"
         android:layout_width="159dp"
         android:layout_height="61dp"
@@ -192,77 +177,80 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.776" />
 
-    <ImageButton
-        android:id="@+id/CartButton"
-        android:layout_width="39dp"
-        android:layout_height="36dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/cart"
+    <!-- Menu Bar -->
+    <LinearLayout
+        android:layout_width="325dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_menu"
+        android:padding="8dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/signOutButton"
+        app:layout_constraintVertical_bias="0.928"
+        tools:ignore="VisualLintBounds">
 
-    <ImageButton
-        android:id="@+id/ProfileButton"
-        android:layout_width="42dp"
-        android:layout_height="37dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/iconamoon_profile_light"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.878"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.971"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <!-- Home Button-->
+        <ImageButton
+            android:id="@+id/homeButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/home"
+            android:src="@drawable/home_outline"
+            tools:ignore="TouchTargetSizeCheck" />
 
-    <ImageButton
-        android:id="@+id/FavoriteButton"
-        android:layout_width="43dp"
-        android:layout_height="34dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/material_symbols_favorite_outline"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.297"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.968"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <!-- Favorite Button-->
+        <ImageButton
+            android:id="@+id/FavoriteButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/favorite"
+            android:src="@drawable/favorite"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
-    <ImageButton
-        android:id="@+id/ScanButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ph_scan_bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.97"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        <!-- Scan Button-->
+        <ImageButton
+            android:id="@+id/ScanButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/scan"
+            android:src="@drawable/scan"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
-    <ImageButton
-        android:id="@+id/homeButton"
-        android:layout_width="46dp"
-        android:layout_height="37dp"
-        android:layout_weight="1"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Home"
-        android:src="@drawable/ic_home"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.972"
-        tools:ignore="MissingConstraints,TouchTargetSizeCheck" />
+        <!-- Cart Button-->
+        <ImageButton
+            android:id="@+id/CartButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/cart"
+            android:src="@drawable/cart_outline"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
+        <!-- Profile Button-->
+        <ImageButton
+            android:id="@+id/ProfileButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/profile"
+            android:src="@drawable/profile_filled"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

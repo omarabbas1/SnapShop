@@ -482,7 +482,7 @@
                 android:layout_marginStart="30dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/cart"
-                android:src="@drawable/cart"
+                android:src="@drawable/cart_outline"
                 tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
             <!-- Profile Button-->

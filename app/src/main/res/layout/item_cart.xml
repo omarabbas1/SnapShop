@@ -11,6 +11,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/item"
         android:scaleType="centerCrop" />
 
     <!-- Vertical LinearLayout to hold item name and price -->
@@ -25,7 +26,7 @@
             android:id="@+id/item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Item Name"
+            android:text="@string/item_name"
             android:textStyle="bold"
             android:textSize="16sp" />
 
@@ -34,7 +35,7 @@
             android:id="@+id/item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Price"
+            android:text="@string/price"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -44,6 +45,8 @@
         android:id="@+id/remove_from_cart_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remove" />
+        android:backgroundTint="@color/orange"
+        android:text="@string/remove"
+        android:textColor="@color/black" />
 
 </LinearLayout>

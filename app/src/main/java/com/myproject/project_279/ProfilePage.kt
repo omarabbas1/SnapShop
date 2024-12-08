@@ -23,26 +23,26 @@ class ProfilePage : AppCompatActivity() {
             val intent = Intent(this, ChangePasswordActivity::class.java)
             startActivity(intent)
         }
-        findViewById<ImageButton>(R.id.FavoriteButton).setOnClickListener {
+        findViewById<ImageButton>(R.id.favorite_button).setOnClickListener {
 
             val intent = Intent(this,FavoritesActivity::class.java)
             startActivity(intent)
         }
 
-        findViewById<ImageButton>(R.id.homeButton).setOnClickListener {
+        findViewById<ImageButton>(R.id.home_button).setOnClickListener {
 
             startActivity(Intent(this, MainPageActivity::class.java))
         }
 
 
 
-        findViewById<ImageButton>(R.id.ScanButton).setOnClickListener {
+        findViewById<ImageButton>(R.id.scan_button).setOnClickListener {
             startActivity(Intent(this, ProductPageActivity::class.java))
         }
 
 
 
-        findViewById<ImageButton>(R.id.CartButton).setOnClickListener {
+        findViewById<ImageButton>(R.id.shop_button).setOnClickListener {
 
             startActivity(Intent(this, CartFragment::class.java))
         }

@@ -8,7 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface ApiService {
-    @GET("/search") // Adjust this path to match your backend's search endpoint
+    @GET("/search")
     fun searchItems(@Query("query") query: String): Call<SearchResponse>
 
     @POST("/api/get-items")

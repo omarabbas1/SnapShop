@@ -31,9 +31,9 @@ class AddToCartAdapter(
                 .load(imageUrl)
                 .into(itemImage)
 
-            // Handle remove button click
+
             removeButton.setOnClickListener {
-                onRemoveFromCartClick(item)  // Call the callback to remove the item
+                onRemoveFromCartClick(item)
             }
         }
     }

@@ -23,25 +23,25 @@ class FavoritesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites)
 
-        // Initialize views
+
         favoritesRecyclerView = findViewById(R.id.favorites_list)
         emptyImageView = findViewById(R.id.imageView)
         emptyTextView = findViewById(R.id.textView4)
         subTextView = findViewById(R.id.textView5)
         returnButton = findViewById(R.id.return_button)
 
-        // Fetch favorites from the FavoritesHelper
+
         favoriteItems = FavoritesHelper.getFavorites(this).toMutableList()
 
-        // Set up RecyclerView with the favorite items
+
         val adapter = FavoritesAdapter(favoriteItems, this) { item ->
-            // Handle item removal
+
             removeItemFromFavorites(item)
         }
         favoritesRecyclerView.layoutManager = LinearLayoutManager(this)
         favoritesRecyclerView.adapter = adapter
 
-        // Toggle visibility based on whether favorites exist
+
         if (favoriteItems.isNotEmpty()) {
             favoritesRecyclerView.visibility = View.VISIBLE
             emptyImageView.visibility = View.GONE
@@ -56,12 +56,12 @@ class FavoritesActivity : AppCompatActivity() {
             returnButton.visibility = View.VISIBLE
         }
 
-        // Return button click listener
+
         returnButton.setOnClickListener {
             startActivity(Intent(this, MainPageActivity::class.java))
         }
 
-        // Navigation buttons
+
         findViewById<ImageButton>(R.id.home_button).setOnClickListener {
             startActivity(Intent(this, MainPageActivity::class.java))
         }
@@ -85,7 +85,7 @@ class FavoritesActivity : AppCompatActivity() {
         favoriteItems.remove(item)
         (favoritesRecyclerView.adapter as FavoritesAdapter).notifyDataSetChanged()
 
-        // Update visibility if no items are left
+
         if (favoriteItems.isEmpty()) {
             favoritesRecyclerView.visibility = View.GONE
             emptyImageView.visibility = View.VISIBLE

@@ -25,13 +25,13 @@ class ElectronicsCategoryActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.electronicsItemsListView)
 
-        // Fetch electronics items from the backend API
+
         fetchItemsByCategory("electronics")
     }
 
     private fun fetchItemsByCategory(category: String) {
         val request = Request.Builder()
-            .url("http://10.0.2.2:8000/api/items/$category") // Endpoint for electronics items
+            .url("http://10.0.2.2:8000/api/items/$category")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -55,11 +55,11 @@ class ElectronicsCategoryActivity : AppCompatActivity() {
                             val itemPrice = item.getString("price")
                             val itemImageUrl = item.getString("image_url")
 
-                            // Add the item to the list
+
                             itemsList.add(Item(itemName, itemPrice, itemImageUrl))
                         }
 
-                        // Update the ListView on the main thread
+
                         runOnUiThread {
                             val adapter = ElectronicsItemAdapter(this@ElectronicsCategoryActivity, itemsList)
                             listView.adapter = adapter
@@ -111,10 +111,10 @@ class ElectronicsCategoryActivity : AppCompatActivity() {
                 .placeholder(R.drawable.add1)
                 .into(itemImageView)
 
-            // Set the CheckBox state based on whether the item is in favorites
+
             heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
 
-            // Toggle favorite status when CheckBox is clicked
+
             heartIcon.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     FavoritesHelper.addFavorite(context, item)
@@ -125,7 +125,7 @@ class ElectronicsCategoryActivity : AppCompatActivity() {
                 }
             }
 
-            // Handle Add to Cart Button
+
             addToCartButton.setOnClickListener {
                 AddToCartHelper.addItemToCart(context, item) // Call the CartHelper to add to cart
                 Toast.makeText(context, "${item.name} added to cart", Toast.LENGTH_SHORT).show()

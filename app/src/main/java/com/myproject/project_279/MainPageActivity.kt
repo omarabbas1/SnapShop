@@ -5,7 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.os.PersistableBundle
+
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
@@ -17,7 +17,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,8 +37,8 @@ class MainPageActivity : AppCompatActivity() {
     private lateinit var adsViewPager: ViewPager2
     private lateinit var adsPagerAdapter: AdsPagerAdapter
     private lateinit var dots: Array<ImageView?>
-    private lateinit var heartCheckBox1: CheckBox // First CheckBox
-    private lateinit var heartCheckBox2: CheckBox // Second CheckBox
+    private lateinit var heartCheckBox1: CheckBox
+    private lateinit var heartCheckBox2: CheckBox
     private lateinit var buttonHome: ImageButton
     private lateinit var buttonFavorite: ImageButton
     private lateinit var buttonScan: ImageButton
@@ -46,7 +46,7 @@ class MainPageActivity : AppCompatActivity() {
     private lateinit var buttonProfile: ImageButton
     private val adList = listOf(R.drawable.add1, R.drawable.add2, R.drawable.add3, R.drawable.add4)
 
-    // Save state variables
+
     private var searchText: String? = null
     private var isHeart1Checked: Boolean = false
     private var isHeart2Checked: Boolean = false
@@ -56,28 +56,28 @@ class MainPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
 
-        // Initialize views
+
         profileImageView = findViewById(R.id.imageView)
         usernameTextView = findViewById(R.id.username)
         searchEditText = findViewById(R.id.searchEditText)
         searchIcon = findViewById(R.id.searchIcon)
         adsViewPager = findViewById(R.id.adsViewPager)
-        heartCheckBox1 = findViewById(R.id.heartIcon1) // Initialize first CheckBox
-        heartCheckBox2 = findViewById(R.id.heartIcon2) // Initialize second CheckBox
+        heartCheckBox1 = findViewById(R.id.heartIcon1)
+        heartCheckBox2 = findViewById(R.id.heartIcon2)
         buttonHome = findViewById(R.id.button_home)
         buttonFavorite = findViewById(R.id.button_favorite)
         buttonScan = findViewById(R.id.button_scan)
         buttonCart = findViewById(R.id.button_cart)
         buttonProfile = findViewById(R.id.button_profile)
 
-        // Set up the ads adapter
+
         adsPagerAdapter = AdsPagerAdapter(adList)
         adsViewPager.adapter = adsPagerAdapter
 
-        // Set up the dots indicator
+
         setupDotsIndicator()
 
-        // Set page change listener
+
         adsViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
@@ -85,55 +85,54 @@ class MainPageActivity : AppCompatActivity() {
             }
         })
 
-        // Setup other listeners
+
         setupListeners()
 
         heartCheckBox1.setOnCheckedChangeListener { _, isChecked ->
             val color = if (isChecked) {
-                ContextCompat.getColor(this, R.color.orange) // Change to selected color
+                ContextCompat.getColor(this, R.color.orange)
             } else {
-                ContextCompat.getColor(this, R.color.dark_icon) // Change to unselected color
+                ContextCompat.getColor(this, R.color.dark_icon)
             }
-            heartCheckBox1.buttonTintList = ColorStateList.valueOf(color) // Change the color of the checkbox
+            heartCheckBox1.buttonTintList = ColorStateList.valueOf(color)
 
-            // Change the icon based on selection state
             heartCheckBox1.setBackgroundResource(if (isChecked) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
             isHeart1Checked = isChecked
         }
 
         heartCheckBox2.setOnCheckedChangeListener { _, isChecked ->
             val color = if (isChecked) {
-                ContextCompat.getColor(this, R.color.orange) // Change to selected color
+                ContextCompat.getColor(this, R.color.orange)
             } else {
-                ContextCompat.getColor(this, R.color.dark_icon) // Change to unselected color
+                ContextCompat.getColor(this, R.color.dark_icon)
             }
-            heartCheckBox2.buttonTintList = ColorStateList.valueOf(color) // Change the color of the checkbox
+            heartCheckBox2.buttonTintList = ColorStateList.valueOf(color)
 
-            // Change the icon based on selection state
+
             heartCheckBox2.setBackgroundResource(if (isChecked) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24)
             isHeart2Checked = isChecked
         }
 
         buttonHome.setOnClickListener {
-            // Handle home action
+
         }
         buttonFavorite.setOnClickListener {
             val intent = Intent(this@MainPageActivity, FavoritesActivity::class.java)
             startActivity(intent)
-            // Handle favorite action
+
         }
-//        buttonScan.setOnClickListener {
-//            // Handle scan action
-//            val intent = Intent(this@MainPageActivity, ProductPageActivity::class.java)
-//            startActivity(intent)
-//        }
+        buttonScan.setOnClickListener {
+
+           val intent = Intent(this@MainPageActivity, ProductPageActivity::class.java)
+           startActivity(intent)
+        }
         buttonCart.setOnClickListener {
-            // Handle cart action
+
             val intent = Intent(this@MainPageActivity, CartFragment::class.java)
             startActivity(intent)
         }
         buttonProfile.setOnClickListener {
-            // Handle profile action
+
             val intent = Intent(this@MainPageActivity, ProfilePage::class.java)
             startActivity(intent)
         }
@@ -165,7 +164,7 @@ class MainPageActivity : AppCompatActivity() {
 
 
 
-        // Inside MainPageActivity, where the search icon is clicked
+
         searchIcon.setOnClickListener {
             val searchText = searchEditText.text.toString()
             if (searchText.isNotEmpty()) {
@@ -201,7 +200,7 @@ class MainPageActivity : AppCompatActivity() {
 
 
 
-    // Save instance state when activity is paused or destroyed
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString("SEARCH_TEXT", searchEditText.text.toString())
@@ -209,7 +208,6 @@ class MainPageActivity : AppCompatActivity() {
         outState.putBoolean("HEART2_CHECKED", heartCheckBox2.isChecked)
     }
 
-    // Restore saved instance state when activity is recreated
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         searchText = savedInstanceState.getString("SEARCH_TEXT")
@@ -226,18 +224,18 @@ class MainPageActivity : AppCompatActivity() {
 
         for (i in adList.indices) {
             val dot = ImageView(this)
-            dot.setImageResource(R.drawable.rectangle_inactive) // Set inactive rectangle drawable
+            dot.setImageResource(R.drawable.rectangle_inactive)
             val params = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            params.setMargins(4, 0, 4, 0) // Margin between rectangles
+            params.setMargins(4, 0, 4, 0)
             dot.layoutParams = params
             dotsIndicator.addView(dot)
             dots[i] = dot
         }
 
-        updateDotsIndicator(0) // Set first rectangle active initially
+        updateDotsIndicator(0)
     }
 
     private fun updateDotsIndicator(position: Int) {
@@ -254,7 +252,7 @@ class MainPageActivity : AppCompatActivity() {
         }
 
         profileImageView.setOnClickListener {
-            // Handle profile image click
+
         }
     }
 }

@@ -7,20 +7,20 @@ data class Item(
     val name: String,
     val price: String,
     val imageUrl: String,
-    var quantity: Int = 1 // Add quantity field with default value 1
+    var quantity: Int = 1
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readInt() // Read the quantity from the parcel
+        parcel.readInt()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
         parcel.writeString(price)
         parcel.writeString(imageUrl)
-        parcel.writeInt(quantity) // Write the quantity to the parcel
+        parcel.writeInt(quantity)
     }
 
     override fun describeContents(): Int = 0

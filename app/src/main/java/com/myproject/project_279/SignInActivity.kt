@@ -19,43 +19,42 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        // Find the TextView by its ID
+
         val signUpText = findViewById<TextView>(R.id.signUpText)
 
-        // Full sentence
+
         val fullText = "Don’t have an Account? Sign up"
 
-        // Create a SpannableString
+
         val spannableString = SpannableString(fullText)
 
-        // Clickable span for "Sign up"
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                // Navigate to SignUpActivity
+
                 val intent = Intent(this@SignInActivity, SignUpActivity::class.java)
                 startActivity(intent)
             }
         }
 
-        // Color span for "Sign up"
+
         val signUpColor = ForegroundColorSpan(Color.RED)
 
-        // Apply clickable and color span only to "Sign up"
+
         val startIndex = fullText.indexOf("Sign up") // Start index of "Sign up"
         val endIndex = startIndex + "Sign up".length // End index of "Sign up"
 
         spannableString.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannableString.setSpan(signUpColor, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        // Set the spannable string to the TextView
+
         signUpText.text = spannableString
 
-        // Make the TextView clickable for the "Sign up" part
+
         signUpText.movementMethod = LinkMovementMethod.getInstance()
 
         val btnLogIn = findViewById<Button>(R.id.btnLogIn)
         btnLogIn.setOnClickListener {
-            // Navigate to HomeActivity (or any other activity)
+
             val intent = Intent(this@SignInActivity, MainPageActivity::class.java)
             startActivity(intent)
         }

@@ -18,7 +18,7 @@ class AdsPagerAdapter(private val adList: List<Int>) : RecyclerView.Adapter<AdsP
     }
 
     override fun onBindViewHolder(holder: AdsViewHolder, position: Int) {
-        holder.adImageView.setImageResource(adList[position]) // Set the image resource from the ad list
+        holder.adImageView.setImageResource(adList[position])
     }
 
     override fun getItemCount(): Int {

@@ -12,7 +12,7 @@ class AddToCartHelper {
 
         private val gson = Gson()
 
-        // Get the list of cart items
+
         fun getCartItems(context: Context): List<Item> {
             val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             val cartItemsString = prefs.getString(KEY_CART_ITEMS, null)
@@ -24,7 +24,7 @@ class AddToCartHelper {
             }
         }
 
-        // Add an item to the cart
+
         fun addItemToCart(context: Context, item: Item) {
             val cartItems = getCartItems(context).toMutableList()
             if (!cartItems.any { it.name == item.name }) { // Prevent duplicate by name
@@ -33,7 +33,7 @@ class AddToCartHelper {
             }
         }
 
-        // Save the list of cart items
+
         fun saveCartItems(context: Context, cartItems: List<Item>) {
             val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
             val editor = prefs.edit()

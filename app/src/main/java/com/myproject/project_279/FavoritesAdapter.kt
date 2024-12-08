@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.CheckBox
+
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -25,16 +25,16 @@ class FavoritesAdapter(
 
         fun bind(item: Item) {
             itemName.text = item.name
-            itemPrice.text = "$${item.price}"  // Display price
+            itemPrice.text = "$${item.price}"
 
             // Ensure the full image URL is used
-            val imageUrl = "http://10.0.2.2:8000" + item.imageUrl // Assuming image URL needs this base URL
+            val imageUrl = "http://10.0.2.2:8000" + item.imageUrl
             Glide.with(context)
-                .load(imageUrl)  // Glide will load the image from the complete URL
+                .load(imageUrl)
                 .into(itemImage)
 
             removeButton.setOnClickListener {
-                onFavoriteClick(item)  // Trigger the callback to remove item
+                onFavoriteClick(item)
             }
         }
     }

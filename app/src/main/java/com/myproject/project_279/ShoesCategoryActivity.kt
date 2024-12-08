@@ -25,13 +25,13 @@ class ShoesCategoryActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.shoesItemsListView)
 
-        // Fetch shoes items from the backend API
+
         fetchItemsByCategory("shoes")
     }
 
     private fun fetchItemsByCategory(category: String) {
         val request = Request.Builder()
-            .url("http://10.0.2.2:8000/api/items/$category") // Fetch items for shoes category
+            .url("http://10.0.2.2:8000/api/items/$category")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -55,11 +55,11 @@ class ShoesCategoryActivity : AppCompatActivity() {
                             val itemPrice = item.getString("price")
                             val itemImageUrl = item.getString("image_url")
 
-                            // Add the item to the list
+
                             itemsList.add(Item(itemName, itemPrice, itemImageUrl))
                         }
 
-                        // Update the ListView on the main thread
+
                         runOnUiThread {
                             val adapter = ShoesItemAdapter(this@ShoesCategoryActivity, itemsList)
                             listView.adapter = adapter
@@ -97,7 +97,7 @@ class ShoesCategoryActivity : AppCompatActivity() {
 
             val item = items[position]
 
-            // Set the item details to the views
+
             val itemNameTextView: TextView = view.findViewById(R.id.itemName)
             val itemPriceTextView: TextView = view.findViewById(R.id.itemPrice)
             val itemImageView: ImageView = view.findViewById(R.id.itemImg)
@@ -112,10 +112,10 @@ class ShoesCategoryActivity : AppCompatActivity() {
                 .placeholder(R.drawable.add1)
                 .into(itemImageView)
 
-            // Set the CheckBox state based on whether the item is in favorites
+
             heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
 
-            // Toggle favorite status when CheckBox is clicked
+
             heartIcon.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     FavoritesHelper.addFavorite(context, item)
@@ -126,7 +126,7 @@ class ShoesCategoryActivity : AppCompatActivity() {
                 }
             }
 
-            // Handle Add to Cart Button
+
             addToCartButton.setOnClickListener {
                 AddToCartHelper.addItemToCart(context, item) // Call the CartHelper to add to cart
                 Toast.makeText(context, "${item.name} added to cart", Toast.LENGTH_SHORT).show()

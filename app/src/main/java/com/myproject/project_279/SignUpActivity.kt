@@ -34,45 +34,44 @@ class SignUpActivity : AppCompatActivity() {
             val confirmPasswordText = confirmPassword.text.toString()
 
             if (emailText.isNotEmpty() && phoneText.isNotEmpty() && passwordText == confirmPasswordText) {
-                // Handle sign up logic here
+
                 Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Please fill all fields correctly", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Create clickable "Sign in" text
+
         val fullText = "Already have an Account? Sign in"
         val spannableString = SpannableString(fullText)
 
-        // Clickable span for "Sign in"
+
         val clickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                // Navigate to SignInActivity
                 val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
                 startActivity(intent)
             }
         }
 
-        // Color span for "Sign in"
+
         val signInColor = ForegroundColorSpan(Color.rgb(59, 150, 220))
 
-        // Apply clickable and color span only to "Sign in"
-        val startIndex = fullText.indexOf("Sign in") // Start index of "Sign in"
-        val endIndex = startIndex + "Sign in".length // End index of "Sign in"
+
+        val startIndex = fullText.indexOf("Sign in")
+        val endIndex = startIndex + "Sign in".length
 
         spannableString.setSpan(clickableSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannableString.setSpan(signInColor, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        // Set the spannable string to the TextView
+
         signInText.text = spannableString
 
-        // Make the TextView clickable for the "Sign in" part
+
         signInText.movementMethod = LinkMovementMethod.getInstance()
 
         val btnCreateAccounte = findViewById<Button>(R.id.btnCreateAccount)
         btnCreateAccounte.setOnClickListener {
-            // Navigate to HomeActivity (or any other activity)
+
             val intent = Intent(this@SignUpActivity, MainPageActivity::class.java)
             startActivity(intent)
         }

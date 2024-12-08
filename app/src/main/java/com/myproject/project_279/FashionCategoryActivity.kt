@@ -100,7 +100,7 @@ class FashionCategoryActivity : AppCompatActivity() {
                 .placeholder(R.drawable.add1)
                 .into(itemImageView)
 
-            // Handle Heart Icon (Favorites)
+
             heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
 
             heartIcon.setOnCheckedChangeListener { _, isChecked ->
@@ -113,7 +113,7 @@ class FashionCategoryActivity : AppCompatActivity() {
                 }
             }
 
-            // Handle Add to Cart Button
+
             addToCartButton.setOnClickListener {
                 AddToCartHelper.addItemToCart(context, item) // Call the CartHelper to add to cart
                 Toast.makeText(context, "${item.name} added to cart", Toast.LENGTH_SHORT).show()

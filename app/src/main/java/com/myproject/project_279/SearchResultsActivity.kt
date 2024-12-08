@@ -1,10 +1,9 @@
 package com.myproject.project_279
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
 
 
 
@@ -20,7 +19,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import okhttp3.*
 import org.json.JSONObject
-import java.io.IOException // This should not be manually added.
+import java.io.IOException
 
 
 class SearchResultsActivity : AppCompatActivity() {
@@ -34,7 +33,7 @@ class SearchResultsActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.ItemsListView1)
 
-        // Retrieve the search query from the intent
+
         val searchQuery = intent.getStringExtra("SEARCH_QUERY") ?: ""
 
         if (searchQuery.isNotEmpty()) {
@@ -46,7 +45,7 @@ class SearchResultsActivity : AppCompatActivity() {
 
     private fun searchItems(query: String) {
         val request = Request.Builder()
-            .url("http://10.0.2.2:8000/search/$query") // Correct search endpoint
+            .url("http://10.0.2.2:8000/search/$query")
             .build()
 
         client.newCall(request).enqueue(object : okhttp3.Callback {
@@ -72,18 +71,27 @@ class SearchResultsActivity : AppCompatActivity() {
 
                             itemsList.add(Item(itemName, itemPrice, itemImageUrl))
                         }
+                    }
 
-                        runOnUiThread {
+                    runOnUiThread {
+                        if (itemsList.isEmpty()) {
+                            findViewById<TextView>(R.id.noResultsTextView).visibility = android.view.View.VISIBLE
+                            listView.visibility = android.view.View.GONE
+                        } else {
+                            findViewById<TextView>(R.id.noResultsTextView).visibility = android.view.View.GONE
+                            listView.visibility = android.view.View.VISIBLE
                             val adapter = SearchItemAdapter(this@SearchResultsActivity, itemsList)
                             listView.adapter = adapter
                         }
-                    } else {
-                        runOnUiThread {
-                            Toast.makeText(this@SearchResultsActivity, "No items found", Toast.LENGTH_SHORT).show()
-                        }
+                    }
+                } ?: run {
+                    runOnUiThread {
+                        findViewById<TextView>(R.id.noResultsTextView).visibility = android.view.View.VISIBLE
+                        listView.visibility = android.view.View.GONE
                     }
                 }
             }
+
         })
     }
 
@@ -123,10 +131,10 @@ class SearchResultsActivity : AppCompatActivity() {
                 .placeholder(R.drawable.add1)
                 .into(itemImageView)
 
-            // Set the CheckBox state based on whether the item is in favorites
+
             heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
 
-            // Toggle favorite status when CheckBox is clicked
+
             heartIcon.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     FavoritesHelper.addFavorite(context, item)
@@ -137,7 +145,7 @@ class SearchResultsActivity : AppCompatActivity() {
                 }
             }
 
-            // Handle Add to Cart Button
+
             addToCartButton.setOnClickListener {
                 AddToCartHelper.addItemToCart(context, item) // Call the CartHelper to add to cart
                 Toast.makeText(context, "${item.name} added to cart", Toast.LENGTH_SHORT).show()

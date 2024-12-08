@@ -8,8 +8,6 @@ import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class ProductPageActivity : AppCompatActivity() {
 
@@ -52,23 +50,22 @@ class ProductPageActivity : AppCompatActivity() {
 
 
         findViewById<ImageButton>(R.id.backButton).setOnClickListener {
-            // Navigate to Scan page
+
             startActivity(Intent(this, MainPageActivity::class.java))
         }
         findViewById<Button>(R.id.addToCartButton).setOnClickListener {
-            // Navigate to Scan page
+
             startActivity(Intent(this, CartFragment::class.java))
         }
     }
 
     private fun setTabActive(selectedTab: Button) {
-        // Reset the background tint of the previous active tab
+
         activeTab.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_orange)
 
-        // Set the background tint of the newly selected tab
         selectedTab.backgroundTintList = ContextCompat.getColorStateList(this, R.color.orange)
 
-        // Update the activeTab to the currently selected tab
+
         activeTab = selectedTab
     }
 

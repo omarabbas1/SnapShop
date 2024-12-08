@@ -1,30 +1,28 @@
 package com.myproject.project_279
 
 import android.content.Context
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.ImageView
-import android.widget.Button
+
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.myproject.project_279.Item
 
 class CheckoutAdapter(
     private val cartItems: ArrayList<Item>,
     private val context: Context,
-    private val onQuantityChanged: () -> Unit // Callback to update the total price
+    private val onQuantityChanged: () -> Unit
 ) : RecyclerView.Adapter<CheckoutAdapter.CartViewHolder>() {
 
-    // Calculate total price when the adapter is initialized
+
     private fun calculateTotalPrice(): Double {
         var total = 0.0
         for (item in cartItems) {
-            total += item.price.toDouble() * item.quantity // Ensure both are numbers
+            total += item.price.toDouble() * item.quantity
         }
         return total
     }
@@ -37,9 +35,9 @@ class CheckoutAdapter(
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
         val cartItem = cartItems[position]
         holder.productName.text = cartItem.name
-        holder.productPrice.text = "$${cartItem.price.format(2)}" // Format price with 2 decimal places
+        holder.productPrice.text = "$${cartItem.price.format(2)}"
 
-        // Set the initial quantity
+
         holder.quantityText.text = cartItem.quantity.toString()
 
 
@@ -49,21 +47,21 @@ class CheckoutAdapter(
             .into(holder.productImage)
 
 
-        // Increase quantity button click listener
+
         holder.increaseButton.setOnClickListener {
             cartItem.quantity++
             holder.quantityText.text = cartItem.quantity.toString()
-            onQuantityChanged() // Update total price when quantity changes
-            notifyItemChanged(position) // Notify RecyclerView that an item has changed
+            onQuantityChanged()
+            notifyItemChanged(position)
         }
 
-        // Decrease quantity button click listener
+
         holder.decreaseButton.setOnClickListener {
-            if (cartItem.quantity > 1) { // Prevent quantity from going below 1
+            if (cartItem.quantity > 1) {
                 cartItem.quantity--
                 holder.quantityText.text = cartItem.quantity.toString()
-                onQuantityChanged() // Update total price when quantity changes
-                notifyItemChanged(position) // Notify RecyclerView that an item has changed
+                onQuantityChanged()
+                notifyItemChanged(position)
             }
         }
     }
@@ -72,7 +70,7 @@ class CheckoutAdapter(
         return cartItems.size
     }
 
-    // ViewHolder class
+
     inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName: TextView = itemView.findViewById(R.id.product_name)
         val productPrice: TextView = itemView.findViewById(R.id.product_price)

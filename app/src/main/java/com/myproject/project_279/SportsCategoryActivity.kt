@@ -25,7 +25,7 @@ class SportsCategoryActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.sportsItemsListView)
 
-        // Fetch sports items from the backend API
+
         fetchItemsByCategory("sport")
     }
 
@@ -55,11 +55,11 @@ class SportsCategoryActivity : AppCompatActivity() {
                             val itemPrice = item.getString("price")
                             val itemImageUrl = item.getString("image_url")
 
-                            // Add the item to the list
+
                             itemsList.add(Item(itemName, itemPrice, itemImageUrl))
                         }
 
-                        // Update the ListView on the main thread
+
                         runOnUiThread {
                             val adapter = SportsItemAdapter(this@SportsCategoryActivity, itemsList)
                             listView.adapter = adapter
@@ -109,10 +109,10 @@ class SportsCategoryActivity : AppCompatActivity() {
                 .placeholder(R.drawable.add1)
                 .into(itemImageView)
 
-            // Set the CheckBox state based on whether the item is in favorites
+
             heartIcon.isChecked = FavoritesHelper.isFavorite(context, item)
 
-            // Toggle favorite status when CheckBox is clicked
+
             heartIcon.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     FavoritesHelper.addFavorite(context, item)
@@ -123,7 +123,7 @@ class SportsCategoryActivity : AppCompatActivity() {
                 }
             }
 
-            // Handle Add to Cart Button
+
             addToCartButton.setOnClickListener {
                 AddToCartHelper.addItemToCart(context, item) // Call the CartHelper to add to cart
                 Toast.makeText(context, "${item.name} added to cart", Toast.LENGTH_SHORT).show()

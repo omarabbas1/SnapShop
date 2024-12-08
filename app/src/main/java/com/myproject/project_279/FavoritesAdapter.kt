@@ -27,7 +27,7 @@ class FavoritesAdapter(
             itemName.text = item.name
             itemPrice.text = "$${item.price}"
 
-            // Ensure the full image URL is used
+
             val imageUrl = "http://10.0.2.2:8000" + item.imageUrl
             Glide.with(context)
                 .load(imageUrl)

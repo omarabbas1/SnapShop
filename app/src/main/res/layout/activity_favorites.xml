@@ -57,7 +57,7 @@
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
         android:text="Return Home"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
@@ -118,53 +118,63 @@
 
         <ImageButton
             android:id="@+id/home_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/home"
             android:src="@drawable/ic_home"
             tools:ignore="TouchTargetSizeCheck" />
 
+        <!-- Favorite Button-->
         <ImageButton
             android:id="@+id/favorite_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Favorite"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/favorite"
             android:src="@drawable/icc_favorite"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
+        <!-- Scan Button-->
         <ImageButton
             android:id="@+id/scan_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Scan"
-            android:src="@drawable/ic_scan"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/scan"
+            android:src="@drawable/scan"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
+        <!-- Cart Button-->
         <ImageButton
             android:id="@+id/shop_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Shop"
-            android:src="@drawable/cart"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/cart"
+            android:src="@drawable/cart_outline"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
 
+        <!-- Profile Button-->
         <ImageButton
             android:id="@+id/profile_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Profile"
-            android:src="@drawable/ic_profile"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/profile"
+            android:src="@drawable/profile"
+            tools:ignore="TouchTargetSizeCheck,ImageContrastCheck" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

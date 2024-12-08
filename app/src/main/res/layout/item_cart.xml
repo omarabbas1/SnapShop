@@ -47,6 +47,6 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/orange"
         android:text="@string/remove"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
 </LinearLayout>
